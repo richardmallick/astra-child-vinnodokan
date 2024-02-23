@@ -1,0 +1,37 @@
+.vinnodokan-top-bar-wrapper{
+	width: 100%;
+	background: #edebeb;
+	padding: 8px;
+}
+.vinnodokan-top-bar-container{
+	width: 100%;
+}
+.vinnodokan-top-bar{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.vinnodokan-top-bar-left{
+	width: 50%;
+}
+.vinnodokan-top-bar-left p{
+	line-height: 1;
+	margin: 0;
+}
+.vinnodokan-top-bar-right{
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.vinnodokan-top-bar-right p{
+	line-height: 1;
+	margin: 0;
+}
+.vinnodokan-top-bar-right a{
+	color: #0b078b;
+	margin-left: 20px;
+}
+.vinnodokan-top-bar-right a:hover{
+	color: #F3AF35;
+}

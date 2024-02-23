@@ -1,0 +1,91 @@
+/* Main Header */
+.ast-builder-grid-row.ast-grid-center-col-layout {
+    grid-template-columns: 1fr 2fr 1fr !important;
+}
+.header-widget-area[data-section="sidebar-widgets-header-widget-1"] {
+    width: 100% !important;
+}
+.dgwt-wcas-search-wrapp {
+    max-width: 100% !important;
+}
+.dgwt-wcas-sf-wrapp{
+	zoom: 1.2;
+}
+.dgwt-wcas-sf-wrapp button.dgwt-wcas-search-submit{
+	text-transform: capitalize;
+}
+
+a.wishlist_products_counter.top_wishlist-heart.top_wishlist-.no-txt:before {
+    font-size: 36px !important;
+	color: #707070 !important;
+}
+.widget_wishlist_products_counter:hover a.wishlist_products_counter.top_wishlist-heart.top_wishlist-.no-txt:before {
+	color: #F3AF35 !important;
+}
+.wishlist_products_counter{
+	position: relative;
+}
+.wishlist_products_counter_number {
+    position: absolute;
+	right: -6px;
+    bottom: 0;
+    color: #fff;
+    background: #F3AF35 !important;
+    font-weight: bold;
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.3);
+    font-size: 11px;
+    line-height: 17px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 99px;
+    text-align: center;
+}
+.ast-icon-shopping-basket svg {
+    height: 1.5em;
+    width: 2em;
+    fill: #707070;
+}
+.ast-site-header-cart.ast-menu-cart-outline .ast-addon-cart-wrap:hover svg {
+    height: 1.5em;
+    width: 2em;
+    fill: #F3AF35;
+}
+
+.ast-site-header-cart .ast-addon-cart-wrap i.astra-icon:after{
+	color: #fff;
+	background: #F3AF35 !important;
+	top: 5px;
+    right: -11px;
+}
+.ast-site-header-cart i.astra-icon{
+	padding: 0 !important;
+}
+
+.dgwt-wcas-search-icon svg path {
+	stroke: #707070; /* Change to your desired fill color */
+	stroke-width: 3;
+  }
+.dgwt-wcas-search-icon svg:not(:root) {
+    overflow: initial !important;
+}
+.dgwt-wcas-ico-magnifier-handler {
+    max-width: 22px !important;
+    width: 22px;
+	margin-right: -10px;
+}
+
+.ast-mobile-header-wrap .menu-toggle .mobile-menu-toggle-icon {
+    background: #fac542;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+[data-section="section-header-mobile-trigger"] .ast-button-wrap .mobile-menu-toggle-icon .ast-mobile-svg {
+	width: 38px;
+	height: 38px;
+	fill: #707070;
+}
