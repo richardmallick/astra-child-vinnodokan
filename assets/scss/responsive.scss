@@ -23,7 +23,12 @@
 	.ast-button-wrap .menu-toggle.main-header-menu-toggle{
 		padding: 0;
 	}
-	
+	.checkout.woocommerce-checkout{
+		margin: 30px 0 60px 0;
+		#customer_details.col2-set {
+			width: 100% !important;
+		}
+	}
 }
 
 @media (max-width: 544px) {

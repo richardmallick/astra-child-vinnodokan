@@ -112,3 +112,72 @@ function vinnodokan_footer() {
 </html>
 <?php
 }
+
+function custom_add_breadcrumbs_before_product_summary() {
+    woocommerce_breadcrumb();
+}
+add_action( 'woocommerce_before_single_product_summary', 'custom_add_breadcrumbs_before_product_summary', 5 );
+
+// Removde Shipping address
+add_action( 'wp_head', function(){
+	if ( is_checkout() ):
+	?>
+	<style>
+		label.woocommerce-form__label.woocommerce-form__label-for-checkbox.checkbox,
+		#billing_country_field{
+			display: none !important;
+		}
+	</style>
+<?php
+	endif;
+});
+
+// Redirect to checkout after adding to cart
+function custom_add_to_cart_redirect() {
+    global $woocommerce;
+    $checkout_url = wc_get_checkout_url();
+
+    return $checkout_url;
+}
+add_filter('woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect');
+
+// Remove checkout fields.
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+function custom_override_checkout_fields( $fields ) {
+    // Remove fields except for the ones you need
+    unset($fields['billing']['billing_last_name']);
+	unset($fields['billing']['billing_company']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_city']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_email']);
+	$fields['billing']['billing_country']['type'] = 'hidden';
+	
+	// Rearrange
+	$fields['billing']['billing_first_name']['priority'] = 10;
+    $fields['billing']['billing_phone']['priority'] = 20;
+    $fields['billing']['billing_state']['priority'] = 30;
+    $fields['billing']['billing_address_1']['priority'] = 40;
+    $fields['order']['order_comments']['priority'] = 50; // Move Order Notes to the bottom
+	
+	
+	// Rename labels and placeholders
+    $fields['billing']['billing_first_name']['label'] = 'নাম লিখুন';
+    $fields['billing']['billing_first_name']['placeholder'] = 'আপনার নাম লিখুন';
+
+    $fields['billing']['billing_phone']['label'] = 'মোবাইল নাম্বার';
+    $fields['billing']['billing_phone']['placeholder'] = 'আপনার নাম্বার দিন';
+
+    $fields['billing']['billing_state']['label'] = 'জেলা';
+    $fields['billing']['billing_state']['default'] = 'BD-13';
+
+    $fields['billing']['billing_address_1']['label'] = 'ঠিকানা';
+    $fields['billing']['billing_address_1']['placeholder'] = 'আপনার সম্পূর্ণ ঠিকানাটি লিখুন';
+
+    $fields['order']['order_comments']['label'] = 'অর্ডার নোট';
+    $fields['order']['order_comments']['placeholder'] = 'প্রোডাক্ট এর কালার মেনশন, সাইজ মেনশন অথবা ডেলিভারি নোট অথবা কিছু বলতে চাইলে এখানে বিস্তারিত বলুন';
+
+
+    return $fields;
+}

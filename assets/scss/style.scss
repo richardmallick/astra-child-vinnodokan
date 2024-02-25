@@ -1,3 +1,9 @@
 @forward './top-bar.scss';
 @forward './header.scss';
+@forward './order-details.scss';
+@forward './checkout.scss';
 @forward './responsive.scss';
+
+#ast-scroll-top,.woocommerce-mini-cart__buttons .button {
+    background: #F3AF35 !important;
+}
