@@ -1,3 +1,23 @@
+@media (max-width: 1440px) {
+	.site-content{
+		.ast-container {
+			display: block;
+		}
+		#primary,
+		.widget-area{
+			width: 100% !important;
+		}
+		#secondary{
+			padding-left: 0 !important;
+		}
+		
+	}
+}
+@media (max-width: 1024px) {
+	.product form.cart .phone-number-wrapper .button {
+		padding: 12px 60px !important;
+	}
+}
 @media ((min-width: 922px)) {
 	.vinnodokan-top-mob{
 		display: none;
@@ -5,6 +25,7 @@
 }
 
 @media (max-width: 922px) {
+	
 	.vinnodokan-top-bar-wrapper{
 		background: #F3AF35;
 	}
@@ -31,7 +52,7 @@
 	}
 }
 
-@media (max-width: 544px) {
+@media (max-width: 596px) {
 	.vinnodokan-top-bar-left{
 		width: 100%;
 		text-align: center;
@@ -62,6 +83,20 @@
 	.ast-builder-grid-row {
 		grid-column-gap: 5px;
 	}
+	.qib-button-wrapper{
+		float: left !important;
+	}
+	.product form.cart .button {
+		width: 100% !important;
+		margin: 10px 0 0 0 !important;
+	}
+	.product{
+		.woocommerce-breadcrumb{
+			display: none;
+			visibility: hidden;
+		}
+	}
+
 }
 
 @media (max-width: 320px) {

@@ -1,0 +1,118 @@
+.ast-woocommerce-container{
+    border-radius: 16px;
+}
+.widget-area{
+    .widget{
+        border-radius: 16px; 
+    }
+}
+.product{
+    font-family: Arial, Helvetica, sans-serif;
+    .woocommerce-breadcrumb{
+        border-radius: 50px;
+        box-shadow: 0 1px 4px rgba(0,0,0,.1);
+        padding: 10px 20px;
+        margin: 0px 0px 50px;
+    }
+    .summary .entry-title{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .vinno-single-product{
+        h4{
+            font-size: 22px;
+            color: #9C9C9C;
+            margin-bottom: 10px;
+        }
+        p{
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            span{
+                color: #F3AF35;
+            }
+        }
+    }
+    .vinno-single-product-price{
+        margin-top: 30px;
+        .regular-price{
+            ins{
+                display: flex;
+                align-items: center;
+                font-size: 2rem;
+                font-weight: bold;
+                .discount{
+                    color: #F3AF35;
+                    font-size: 18px;
+                    margin-left: 12px;
+                    font-weight: normal;
+                }
+            }
+        }
+        .sale-price{
+            margin-top: 15px;
+            color: #9C9C9C;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+    .qib-button-wrapper{
+        background: #fff;
+        color: #fff !important;
+        border-radius: 10px;
+        border: 1px solid #F3AF35;
+        box-shadow: 1px 1px 15px 2px #ddddddad;
+        button.qib-button{
+            width: 1.5em;
+            padding: 4px 6px 4px;
+        }
+        button.qib-button,
+        input.input-text.qty.text{
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none;
+        }
+    }
+    form.cart{
+        margin-bottom: 20px;
+        .button {
+            margin: 3px 8px 8px !important;
+            padding: 14px 32px !important;
+            border-radius: 10px;
+            background: #F3AF35;
+            box-shadow: 1px 1px 15px 2px #ddddddad;
+        }
+        .tinv-wraper.tinv-wishlist{
+            display: none;
+            visibility: hidden;
+        }
+        .phone-number-wrapper{
+            .button{
+                background: #00007C;
+                padding: 12px 20px !important;
+                a{
+                    color: #ffffff;
+                    font-size: 18px;
+                }
+                span{
+                    transform: rotate(-276deg);
+                }
+            }
+        }
+    }
+    .woocommerce-product-gallery{
+        .flex-viewport{
+            border: 1px solid #ddd;
+        }
+        .flex-control-nav{
+            li{
+                border: 1px solid #F3AF35;
+                border-radius: 8px;
+            }
+        }
+    }
+    
+    .ast-on-card-button{
+        top: 7em;
+    }
+}

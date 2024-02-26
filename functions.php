@@ -25,8 +25,8 @@ add_action( 'astra_header_before', function() {
                 </div>
                 <div class="vinnodokan-top-bar-right">
                     <p><span>Call Us:</span> 01988232393</p>
-                    <a href="#">FB Page</a>
-                    <a href="#">FB Group</a>
+                    <a href="https://www.facebook.com/vinnodokan" target="_blank">FB Page</a>
+                    <a href="https://www.facebook.com/groups/2702224469804560" target="_blank">FB Group</a>
                 </div>
             </div>
         </div>
@@ -113,6 +113,15 @@ function vinnodokan_footer() {
 <?php
 }
 
+
+add_filter('woocommerce_currency_symbol', 'change_currency_symbol', 10, 2);
+function change_currency_symbol($currency_symbol, $currency) {
+    if ($currency === 'BDT') {
+        $currency_symbol = '৳'; // Unicode representation for Bangladeshi Taka (TK)
+    }
+    return $currency_symbol;
+}
+
 function custom_add_breadcrumbs_before_product_summary() {
     woocommerce_breadcrumb();
 }
@@ -180,4 +189,63 @@ function custom_override_checkout_fields( $fields ) {
 
 
     return $fields;
+}
+
+// Single Product page
+
+add_filter('woocommerce_get_price_html', 'display_sale_price_before_regular_price', 10, 2);
+
+function display_sale_price_before_regular_price($price_html, $product) {
+    // Check if we are on the single product page
+    if (is_product()) {
+        // If the product is on sale
+        ob_start();
+        if ($product->is_on_sale() && $product->get_regular_price() && $product->get_sale_price()) {
+            $discount_percentage = round(($product->get_regular_price() - $product->get_sale_price()));
+            ?>
+            <div class="vinno-single-product-price">
+                <div class="regular-price">
+                    <ins><?php echo wc_price($product->get_sale_price()); ?><span class="discount"> <?php echo $discount_percentage; ?> ৳ ছাড়</span></ins>
+                </div>
+                <div class="sale-price">
+                    <span>M.R.P: </span><del><?php echo wc_price($product->get_regular_price()); ?></del>
+                </div>
+            </div>
+            <?php
+        } elseif ($product->is_on_sale() && $product->get_regular_price() && !$product->get_sale_price()) {
+            ?>
+            <div class="vinno-single-product-price">
+                <div class="regular-price">
+                    <ins><?php echo wc_price($product->get_regular_price()); ?></ins>
+                </div>
+            </div>
+            <?php
+        }
+
+        $price_html = ob_get_clean();
+
+        return $price_html;
+    } else {
+        // Return the original price HTML for other pages
+        return $price_html;
+    }
+}
+
+
+add_filter('woocommerce_price_trim_zeros', '__return_true');
+
+add_filter('woocommerce_product_single_add_to_cart_text', 'change_add_to_cart_button_text');
+function change_add_to_cart_button_text($text) {
+    return __('BUY NOW', 'woocommerce');
+}
+
+add_action( 'woocommerce_after_add_to_cart_button', 'add_phone_number_after_add_to_cart_button', 20 );
+function add_phone_number_after_add_to_cart_button() {
+    if (is_product()) {
+    ?>
+    <div class="phone-number-wrapper">
+        <button class="button"><a href="tel:01988232393"><span class="dashicons dashicons-phone"></span> 01988232393</a></button>
+    </div>
+    <?php
+    }
 }
