@@ -7,3 +7,13 @@
 #ast-scroll-top,.woocommerce-mini-cart__buttons .button {
     background: #F3AF35 !important;
 }
+
+.vinno-phone-icon{
+	display: inline-block;
+	svg{
+		width: 18px;
+		fill: #fff;
+		transform: rotate(9deg);
+		margin-bottom: -2px;
+	}
+}

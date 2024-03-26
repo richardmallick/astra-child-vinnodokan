@@ -90,7 +90,9 @@ a.wishlist_products_counter.top_wishlist-heart.top_wishlist-.no-txt:before {
 	fill: #707070;
 }
 
-.vinno-hotline .dashicons{
-    transform: rotate(95deg);
-    margin-top: 4px;
+.vinno-hotline{
+	display: flex;
+	p{
+		margin-left: 5px;
+	}
 }

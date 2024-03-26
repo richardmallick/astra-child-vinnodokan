@@ -231,12 +231,11 @@ function display_sale_price_before_regular_price($price_html, $product) {
     }
 }
 
-
 add_filter('woocommerce_price_trim_zeros', '__return_true');
 
 add_filter('woocommerce_product_single_add_to_cart_text', 'change_add_to_cart_button_text');
 function change_add_to_cart_button_text($text) {
-    return __('BUY NOW', 'woocommerce');
+    return __('অর্ডার করুন', 'woocommerce');
 }
 
 add_action( 'woocommerce_after_add_to_cart_button', 'add_phone_number_after_add_to_cart_button', 20 );
@@ -244,8 +243,109 @@ function add_phone_number_after_add_to_cart_button() {
     if (is_product()) {
     ?>
     <div class="phone-number-wrapper">
-        <button class="button"><a href="tel:01988232393"><span class="dashicons dashicons-phone"></span> 01988232393</a></button>
+        <button class="button"><a href="tel:01988232393"><div class="vinno-phone-icon"><svg aria-hidden="true" class="e-font-icon-svg e-fas-phone-alt" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path></svg></div> 01988232393</a></button>
     </div>
     <?php
     }
+}
+
+/**
+ * Change WooCommerce "Place Order" button text
+ * 
+ * @param string $button_text Existing button text
+ * @return string Modified button text
+ */
+function custom_checkout_button_text( $button_text ) {
+	return 'অর্ডার কনফার্ম করুন'; // Replace with your desired text
+  }
+  add_filter( 'woocommerce_order_button_text', 'custom_checkout_button_text' );
+  
+
+add_filter('woocommerce_states', 'change_district_name_language', 10, 1);
+function change_district_name_language($states) {
+    // Define your translation array for district names
+	 $district_translations = array(
+		'Bagerhat' => 'বাগেরহাট',
+		'Bandarban' => 'বান্দরবান',
+		'Barguna' => 'বরগুনা',
+		'Barishal' => 'বরিশাল',
+		'Bhola' => 'ভোলা',
+		'Bogura' => 'বগুড়া',
+		'Brahmanbaria' => 'ব্রাহ্মণবাড়িয়া',
+		'Chandpur' => 'চাঁদপুর',
+		'Chapainawabganj' => 'চাঁপাইনবাবগঞ্জ',
+		'Chattogram' => 'চট্টগ্রাম',
+		'Chuadanga' => 'চুয়াডাঙ্গা',
+		'Cumilla' => 'কুমিল্লা',
+		"Cox's Bazar" => 'কক্সবাজার',
+		'Dhaka' => 'ঢাকা',
+		'Dinajpur' => 'দিনাজপুর',
+		'Faridpur ' => 'ফরিদপুর',
+		'Feni' => 'ফেনী',
+		'Gaibandha' => 'গাইবান্ধা',
+		'Gazipur' => 'গাজীপুর',
+		'Gopalganj' => 'গোপালগঞ্জ',
+		'Habiganj' => 'হবিগঞ্জ',
+		'Jamalpur' => 'জামালপুর',
+		'Jashore' => 'যশোর',
+		'Jhalokati' => 'ঝালকাঠি',
+		'Jhenaidah' => 'ঝিনাইদহ',
+		'Joypurhat' => 'জয়পুরহাট',
+		'Khagrachhari' => 'খাগড়াছড়ি',
+		'Khulna' => 'খুলনা',
+		'Kishoreganj' => 'কিশোরগঞ্জ',
+		'Kurigram' => 'কুড়িগ্রাম',
+		'Kushtia' => 'কুষ্টিয়া',
+		'Lakshmipur' => 'লক্ষ্মীপুর',
+		'Lalmonirhat' => 'লালমনিরহাট',
+		'Madaripur' => 'মাদারীপুর',
+		'Magura' => 'মাগুরা',
+		'Manikganj ' => 'মানিকগঞ্জ',
+		'Meherpur' => 'মেহেরপুর',
+		'Moulvibazar' => 'মৌলভীবাজার',
+		'Munshiganj' => 'মুন্সিগঞ্জ',
+		'Mymensingh' => 'ময়মনসিংহ',
+		'Naogaon' => 'নওগাঁ',
+		'Narail' => 'নড়াইল',
+		'Narayanganj' => 'নারায়ণগঞ্জ',
+		'Narsingdi' => 'নরসিংদী',
+		'Natore' => 'নাটোর',
+		'Nawabganj' => 'নওয়াবগঞ্জ',
+		'Netrakona' => 'নেত্রকোনা',
+		'Nilphamari' => 'নীলফামারী',
+		'Noakhali' => 'নোয়াখালী',
+		'Pabna' => 'পাবনা',
+		'Panchagarh' => 'পঞ্চগড়',
+		'Patuakhali' => 'পটুয়াখালী',
+		'Pirojpur' => 'পিরোজপুর',
+		'Rajbari' => 'রাজবাড়ি',
+		'Rajshahi' => 'রাজশাহী',
+		'Rangamati' => 'রাঙ্গামাটি',
+		'Rangpur' => 'রংপুর',
+		'Satkhira' => 'সাতক্ষীরা',
+		'Shariatpur' => 'শরীয়তপুর',
+		'Sherpur' => 'শেরপুর',
+		'Sirajganj' => 'সিরাজগঞ্জ',
+		'Sunamganj' => 'সুনামগঞ্জ',
+		'Sylhet' => 'সিলেট',
+		'Tangail' => 'টাঙ্গাইল',
+		'Thakurgaon' => 'ঠাকুরগাঁও'
+	);
+    // Loop through each state and change the district names if translation is available
+    foreach ($states['BD'] as $key => $state) {
+        if (isset($district_translations[$state])) {
+            $states['BD'][$key] = $district_translations[$state];
+        }
+    }
+
+    return $states;
+}
+
+add_filter('woocommerce_thankyou_order_received_text', 'change_order_received_text');
+
+function change_order_received_text($text) {
+    // Change the text to your desired message
+    $new_text = "আপনার অর্ডার টি কনফার্ম করা হলো। দয়া করে অপেক্ষা করুন আপনাকে কল করা হবে।";
+    
+    return $new_text;
 }
